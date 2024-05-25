@@ -3,8 +3,8 @@
                <div class="iq-sidebar-logo">
                   <div class="top-logo">
                      <a href="index.html" class="logo">
-                     <img src="images/logo.png" class="img-fluid" alt="">
-                     <span>Sofbox</span>
+                     <img src="images/iot.png" class="img-fluid" alt="">
+                     <span>Arkatama</span>
                      </a>
                   </div>
                </div>
@@ -30,7 +30,7 @@
                   </div>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                      <ul class="navbar-nav ml-auto navbar-list">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                            <a class="search-toggle iq-waves-effect" href="#"><i class="ri-search-line"></i></a>
                            <form action="#" class="search-box">
                               <input type="text" class="text search-input" placeholder="Type here to search..." />
@@ -40,7 +40,7 @@
                            <a href="#" class="search-toggle iq-waves-effect">
                               <i class="ri-mail-line"></i>
                               <span class="badge badge-pill badge-primary badge-up count-mail">3</span>
-                           </a>
+                           </a> -->
                            <div class="iq-sub-dropdown">
                               <div class="iq-card iq-card-block iq-card-stretch iq-card-height shadow-none m-0">
                                  <div class="iq-card-body p-0 ">
@@ -106,14 +106,14 @@
                               </div>
                            </div>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                            <a href="#" class="iq-waves-effect"><i class="ri-shopping-cart-2-line"></i></a>
                         </li>
                         <li class="nav-item">
                            <a href="#" class="search-toggle iq-waves-effect">
                               <i class="ri-notification-2-line"></i>
                               <span class="bg-danger dots"></span>
-                           </a>
+                           </a> -->
                            <div class="iq-sub-dropdown">
                               <div class="iq-card iq-card-block iq-card-stretch iq-card-height shadow-none m-0">
                                  <div class="iq-card-body p-0 ">
