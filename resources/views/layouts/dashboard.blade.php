@@ -26,7 +26,7 @@
             </div>
          </div>
       </div>
-      
+
       <!-- Wrapper END -->
 
       <!-- Footer -->
@@ -35,5 +35,9 @@
 
       <!-- Optional JavaScript -->
       @include('layouts.dashboard._foot')
+
+      @stack('scripts')
+
    </body>
+
 </html>

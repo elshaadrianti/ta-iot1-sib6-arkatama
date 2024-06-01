@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <!-- SEO Meta Tags -->
     <meta name="description" content="Create a stylish landing page for your business startup and get leads for the offered services with this free HTML landing page template.">
     <meta name="author" content="Inovatik">
@@ -19,7 +19,7 @@
 
     <!-- Website Title -->
     <title>Evolo - StartUp HTML Landing Page Template</title>
-    
+
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,600,700,700i&amp;subset=latin-ext" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -27,12 +27,12 @@
     <link href="css/swiper.css" rel="stylesheet">
 	<link href="css/magnific-popup.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
-	
+
 	<!-- Favicon  -->
     <link rel="icon" href="images/favicon.png">
 </head>
 <body data-spy="scroll" data-target=".fixed-top">
-    
+
     <!-- Preloader -->
 	<div class="spinner-wrapper">
         <div class="spinner">
@@ -42,7 +42,7 @@
         </div>
     </div>
     <!-- end of preloader -->
-    
+
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
@@ -51,7 +51,7 @@
 
         <!-- Image Logo -->
         <a class="navbar-brand logo-image" href="index.html"><img src="images/logo.svg" alt="alternative"></a>
-        
+
         <!-- Mobile Menu Toggle Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-awesome fas fa-bars"></span>
@@ -68,6 +68,18 @@
                     <a class="nav-link page-scroll" href="https://github.com/elshaadrianti">Contact</a>
                 </li>
 
+                {{--cek apakah sudah login --}}
+                @if (Auth::check())
+                {{--jika sudah tampilkan menu dashbord dan logout --}}
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="{{ route('dashboard') }}">Dashboard</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="{{ route('logout') }}">Logout</a>
+                </li>
+                @else
+                {{--jika belum tampilkan register dan login --}}
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="{{ route('register') }}">Register</a>
                 </li>
@@ -75,8 +87,7 @@
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="{{ route('login') }}">login</a>
                 </li>
-
-
+                @endif
             </ul>
             <span class="nav-item social-icons">
                 <span class="fa-stack">
@@ -106,7 +117,14 @@
                         <div class="text-container">
                             <h1><span class="turquoise">StartUp Landing</span> Page Template Free</h1>
                             <p class="p-large">Use Evolo free landing page template to promote your business startup and generate leads for the offered services</p>
-                            <a class="btn-solid-lg page-scroll" href="{{ route('login')}}">login</a>
+
+
+                            @if (Auth::check())
+                               <a class="btn-solid-lg page-scroll" href="{{ route('dashboard')}}">Dashboard</a>
+                            @else
+                               <a class="btn-solid-lg page-scroll" href="{{ route('login')}}">login</a>
+                            @endif
+
                         </div> <!-- end of text-container -->
                     </div> <!-- end of col -->
                     <div class="col-lg-6">
@@ -127,7 +145,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h5>Trusted By</h5>
-                    
+
                     <!-- Image Slider -->
                     <div class="slider-container">
                         <div class="swiper-container image-slider">
@@ -215,7 +233,7 @@
                         </div>
                     </div>
                     <!-- end of card -->
-                    
+
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
         </div> <!-- end of container -->
@@ -243,7 +261,7 @@
         </div> <!-- end of container -->
     </div> <!-- end of basic-1 -->
     <!-- end of details 1 -->
-    
+
 
     <!-- Details Lightbox 1 -->
 	<div id="details-lightbox-1" class="lightbox-basic zoom-anim-dialog mfp-hide">
@@ -288,7 +306,7 @@
     </div> <!-- end of lightbox-basic -->
     <!-- end of details lightbox 1 -->
 
-    
+
     <!-- Details 2 -->
     <div class="basic-2">
         <div class="container">
@@ -583,7 +601,7 @@
             </div> <!-- end of row -->
             <div class="row">
                 <div class="col-lg-12">
-                    
+
                     <!-- Video Preview -->
                     <div class="image-container">
                         <div class="video-wrapper">
@@ -621,7 +639,7 @@
                     <div class="slider-container">
                         <div class="swiper-container card-slider">
                             <div class="swiper-wrapper">
-                                
+
                                 <!-- Slide -->
                                 <div class="swiper-slide">
                                     <div class="card">
@@ -633,7 +651,7 @@
                                     </div>
                                 </div> <!-- end of swiper-slide -->
                                 <!-- end of slide -->
-        
+
                                 <!-- Slide -->
                                 <div class="swiper-slide">
                                     <div class="card">
@@ -642,10 +660,10 @@
                                             <p class="testimonial-text">Evolo has always helped or startup to position itself in the highly competitive market of mobile applications. You will not regret using it!</p>
                                             <p class="testimonial-author">Marsha Singer - Developer</p>
                                         </div>
-                                    </div>        
+                                    </div>
                                 </div> <!-- end of swiper-slide -->
                                 <!-- end of slide -->
-        
+
                                 <!-- Slide -->
                                 <div class="swiper-slide">
                                     <div class="card">
@@ -654,17 +672,17 @@
                                             <p class="testimonial-text">Love their services and was so amazed with the support and results that I purchased Evolo for two years in a row. They are awesome.</p>
                                             <p class="testimonial-author">Roy Smith - Marketer</p>
                                         </div>
-                                    </div>        
+                                    </div>
                                 </div> <!-- end of swiper-slide -->
                                 <!-- end of slide -->
-                               
+
                             </div> <!-- end of swiper-wrapper -->
-        
+
                             <!-- Add Arrows -->
                             <div class="swiper-button-next"></div>
                             <div class="swiper-button-prev"></div>
                             <!-- end of add arrows -->
-        
+
                         </div> <!-- end of swiper-container -->
                     </div> <!-- end of slider-container -->
                     <!-- end of card slider -->
@@ -687,7 +705,7 @@
             </div> <!-- end of row -->
             <div class="row">
                 <div class="col-lg-12">
-                    
+
                     <!-- Team Member -->
                     <div class="team-member">
                         <div class="image-wrapper">
@@ -812,7 +830,7 @@
                     </div>
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
-                    
+
                     <!-- Contact Form -->
                     <form id="contactForm" data-toggle="validator" data-focus="false">
                         <div class="form-group">
@@ -831,7 +849,7 @@
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group checkbox">
-                            <input type="checkbox" id="cterms" value="Agreed-to-Terms" required>I have read and agree with Evolo's stated <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-conditions.html">Terms Conditions</a> 
+                            <input type="checkbox" id="cterms" value="Agreed-to-Terms" required>I have read and agree with Evolo's stated <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-conditions.html">Terms Conditions</a>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
@@ -908,11 +926,11 @@
                                 <i class="fab fa-linkedin-in fa-stack-1x"></i>
                             </a>
                         </span>
-                    </div> 
+                    </div>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
         </div> <!-- end of container -->
-    </div> <!-- end of footer -->  
+    </div> <!-- end of footer -->
     <!-- end of footer -->
 
 
@@ -925,10 +943,10 @@
                 </div> <!-- end of col -->
             </div> <!-- enf of row -->
         </div> <!-- end of container -->
-    </div> <!-- end of copyright --> 
+    </div> <!-- end of copyright -->
     <!-- end of copyright -->
-    
-    	
+
+
     <!-- Scripts -->
     <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
     <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
