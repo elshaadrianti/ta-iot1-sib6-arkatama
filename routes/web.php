@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LedController;
+use App\Http\Controllers\SensorController;
+use App\Service\WhatsappNotificationService;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,27 +13,41 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     $data['title'] = 'Dashboard';
-        $data['breadcrumbs'][]=[
-            'title' => 'Dashboard',
-            'url' => route('dashboard')
-            ];
+    $data['breadcrumbs'][] = [
+        'title' => 'Dashboard',
+        'url' => route('dashboard')
+    ];
 
-    return view('layouts/dashboard', $data);
+    return view('pages.dashboard', $data);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/user', function () {
-    return view('layouts/user');
-})->name('user');
-
-Route::get('/led-control', function () {
-    return view('led-control');
-})->name('led-control');
-
 Route::get('/sensor', function () {
-    return view('layouts/sensor');
-})->name('sensor');
+    $data['title'] = 'Sensor';
+    $data['breadcrumbs'][] = [
+        'title' => 'Sensor',
+        'url' => route('sensor.index')
+    ];
+    return view('pages.sensor', $data);
+})->middleware(['auth', 'verified'])->name('sensor.index');
 
-//adalah route yang hanya boleh diakses jika sudah login
+// Route::get('/led', function () {
+//     $data['title'] = 'LED Control';
+//     $data['breadcrumbs'][] = [
+//         'title' => 'LED Control',
+//         'url' => route('led.index')
+//     ];
+//     return view('pages.led', $data);
+// })->middleware(['auth', 'verified'])->name('led.index');
+Route::controller(LedController::class)->group(function () {
+    Route::get('/leds', 'index')->name('led.index');
+    Route::post('/leds', 'store')->name('led.store');
+});
+
+
+
+
+
+// adalah route yang hanya boleh diakses jika sudah login
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -38,7 +55,16 @@ Route::middleware('auth')->group(function () {
 
     //Users
     Route::get('users', [UserController::class, 'index'])->name('users.index');
+
+    Route::get('/whatsapp', function () {
+        $target = request('target');
+        $message = 'Ada kebocoran gas dirumah anda, segera cek sekarang!';
+        $response = WhatsappNotificationService::sendMessage($target, $message);
+
+        echo $response;
+    });
 });
 
 
-require __DIR__.'/auth.php';
+
+require __DIR__ . '/auth.php';
